@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <script type="text/javascript" src="script.js" ></script>
+        <script type="text/javascript" src="questions.js" ></script>
+        <link rel="stylesheet" href="style.css"/>
+        <title>JS | Hangman - Arrays</title>
+    </head>
+
+    <body>
+        <main id="game-frame">
+            <h1>Hangman</h1>
+            <h2>-Arrays Edition-</h2>
+
+            <div id="frame-intro" class="frame">
+                <form id="name-form" method="post">
+                    <div class="form-group">
+                        <label for="name">Enter Your Name</label>
+                        <input id="name" class="player-name" type="text" autocomplete="off"/>
+                        <div id="name-warning" class="name-warning warning">Enter a valid name</div>
+                        <input type="submit" id="btn-name" value="Start"/>
+                    </div>
+                </form>
+                <div class="sources">
+                    <p>Cite Sources:</p>
+                    <a href="https://www.w3schools.com/js/js_arrays.asp" target="_blank">https://www.w3schools.com/js/js_arrays.asp</a>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array</a>
+                    <a href="https://blog.kevinchisholm.com/javascript/javascript-interview-questions-arrays/" target="_blank">https://blog.kevinchisholm.com/javascript/javascript-interview-questions-arrays/</a>
+                </div>
+            </div>
+            <div id="frame-story" class="frame">
+                <p class="storyline">
+                    <span id="playerName"></span>, You have been suspected of cheating for the array lab assignment. Professor Sean has filed a case against you. Its time to prove you are not guilty. You will be questioned by the officials in another 10 minutes. If you are found to be guilty you will be sentenced to capital punishment!!!
+                </p>
+                <div class="button-group">
+                    <button id="refer-notes">Quickly refer notes :(</button>
+                    <button id="ready">Me! Cheat? I'm Ready!</button>
+                </div>
+            </div>
+
+            <div id="frame-notes" class="frame">
+                <nav>
+                    <ol>
+                        <li><a href="#section-1">Introduction</a></li>
+                        <li><a href="#section-2">Access Elements</a></li>
+                        <li><a href="#section-3">Array Operations</a></li>
+                        <li><a href="#section-4">Array Iteration</a></li>
+                    </ol>
+                    <button id="start-game">Start Game</button>
+                </nav>
+                <section id="section-1">
+                    <h3>What are arrays?</h3>
+                    <p>An array is a special variable, which can hold more than one value at a time</p>
+                    <div class="code-block">
+                        <p>var car1= "Benz";</p>
+                        <p>var car2= "Fiat";</p>
+                        <p>var car3= "BMW";</p>
+                        <br/>
+                        <p class="comment">// what happens when you want to store 100 cars? combine them into an array</p>
+                        <p>var cars = ["Benz", "Fiat", "BMW"];</p>
+                    </div>
+                    <p>Using an array literal is the easiest way to create a JavaScript Array</p>
+                    <div class="code-block">
+                        <p class="comment">// var array_name = [item1, item2, ...];</p>
+                        <p>var cars = ["Benz", "Fiat", "BMW"];</p>
+                    </div>
+                </section>
+                <hr/>
+                <section id="section-2">
+                    <h3>Accessing Array Elements</h3>
+                    <p>Now you know how to create an array, but lets think about accessing the variables stored in an array. You can access element using array indexes.</p>
+                    <p>Each array element has an index associated to it. Indexes are numbers that are similar to an address of a house in the same street.</p>
+                    <div class="code-block">
+                        <p>var cars = ["Benz", "Fiat", "BMW"];</p>
+                        <br/>
+                        <p class="comment">// To access the third element of the above array</p>
+                        <p>var thirdElement = cars[2]; <span class="comment">// variable thirdElement would now store "BMW"</span></p>
+                        
+                    </div>
+                    <ul>
+                        <li>What! shouldn't it be cars[3] to access the third element? Why cars[2]?</li>
+                        <li class="special"> Because, Array indexes are Zero-based</li>
+                        <li>Indexes of arrays start from 0, so the first element is stored in 0th index.</li>
+                        <li>To access the first element in an array m is, m[0] </li>
+                        <li>To access the last element in an array m that has n number of elements is, m[n-1] </li>
+                    </ul>
+                </section>
+                <hr/>
+                <section id="section-3">
+                    <h3>Array Operations</h3>
+                    <p>There are several handy array operations in JS</p>
+                    <div class="code-block">
+                        <p>var cars = ["Benz", "Fiat", "BMW"];</p>
+                        <br/>
+                        <p class="comment">// Add an item to the end of an Array - push(newElement) </p>
+                        <p>cars.push("Toyota"); <span class="comment">// output:- cars = ["Benz", "Fiat", "BMW", "Toyota"] </span></p>
+                        <br/>
+                        <p class="comment">// Remove an item from the end of an Array - pop() </p>
+                        <p>cars.pop(); <span class="comment">// output:- cars = ["Benz", "Fiat", "BMW"] </span></p>
+                        <br/>
+                        <p class="comment">// Remove an item from the beginning of an Array - shift() </p>
+                        <p>cars.shift(); <span class="comment">// output:- cars = ["Fiat", "BMW"] </span></p>
+                        <br/>
+                        <p class="comment">// Add an item to the beginning of an Array - unshift(newElement) </p>
+                        <p>cars.unshift("Porsche"); <span class="comment">// output:- cars = ["Porsche", "Fiat", "BMW"] </span></p>
+                        <br/>
+                        <p class="comment">// Find the index of an item in the Array - unshift(elementValue) </p>
+                        <p>var index = cars.indexOf("Porsche"); <span class="comment">// output:- index = 0 </span></p>
+                        <br/>
+                        <p class="comment">// Remove an item by index position - splice(index, 1) </p>
+                        <p>var removedItem = cars.splice(index, 1);</p>
+                        <p class="comment">// output:- removedItem = ["Porsche"]; cars=["Fiat", "BMW"]</p>
+                    </div>
+                </section>
+                <hr/>
+                <section id="section-4">
+                    <h3>Iterating over an array</h3>
+                    <p>Using a simple for-loop you can loop through the elements of an array</p>
+                    <div class="code-block">
+                        <p>var cars = ["Benz", "Fiat", "BMW"];</p>
+                        <br/>
+                        <p>
+                            for(int index = 0; index &lt= cars; index++){
+                                <br/>
+                                &nbsp; console.log(cars[index]);
+                                <br/>                        
+                            }
+                        </p>
+                    </div>
+                    <p>This simple loop will print all the elements of the array to the console. You can perform additional logical operations inside the loop to apply the logic to each and every element.</p>
+                    <div class="code-block">
+                        <p class="comment">// alternative approch with for-each method</p>
+                        <p>var cars = ["Benz", "Fiat", "BMW"];</p>
+                        <br/>
+                        <p>
+                            cars.forEach(function(car){
+                            <br/>
+                            &nbsp;console.log((car))
+                            <br/>
+                            })
+                        </p>
+                    </div>
+                </section>
+            </div>   
+
+        <div id="frame-instructions" class="frame">
+            <h3>Instructions</h3>
+            <span id="player-name_instruction"></span>,
+            <ul>
+                <li>You will have to answer 10 inquiries related to arrays.</li>
+                <li>Try to answer all the questions correctly, to prove that you are innocent</li>
+                <li>Each wrong answer would get you close to the capital punishment</li>
+                <li>5 wrong answers would end the game and you will be punnished</li>
+            </ul>
+            <p>Your faith is depended on the answers that you choose, so be wise about the answers. Your time is already running.</p>
+            <div class="signature">
+                <p>-The Officials-</p>
+                <p><span id="show-date"></span></p>
+            </div>
+            <button id="play">Agree & Play</button>
+        </div>
+        <div id="game" class="frame">
+            <div class="hangman">
+                <div class="hg-container">
+                    <img src="./assets/images/frame.png" id="hg_frame" height="220" class="hg_img" alt="hangman frame"/>
+                    <img src="./assets/images/head.png" id="hg_head" height="220" class="hg_img" alt="hangman head"/>
+                    <img src="./assets/images/righthand.png" id="hg_right-hand" height="220" class="hg_img" alt="hangman right hand"/>
+                    <img src="./assets/images/lefthand.png" id="hg_left-hand" height="220" class="hg_img"  alt="hangman left hand"/>
+                    <img src="./assets/images/rightleg.png" id="hg_right-leg" height="220" class="hg_img" alt="hangman right leg"/>
+                    <img src="./assets/images/leftleg.png" id="hg_left-leg" height="220" class="hg_img" alt="hangman left leg"/>
+                </div>
+            </div>
+            <div id="question-case" class="question">
+                <h3><span id="arr_question"></span></h3>
+                <p><span id="arr_question-cb" class="code-block"></span></p>
+                <form>
+                    <div class="answer-group">
+                        <input type="radio" name="answer" id="answer1" value="0">
+                        <label for="answer1"><span id="ans1"></span></label>
+                    </div>
+                    <div class="answer-group">
+                        <input type="radio" name="answer" id="answer2" value="1">
+                        <label for="answer2"><span id="ans2"></span></label>
+                    </div>
+                    <div class="answer-group">
+                        <input type="radio" name="answer" id="answer3" value="2">
+                        <label for="answer3"><span id="ans3"></span></label>
+                    </div>
+                    <div class="answer-group">
+                        <input type="radio" name="answer" id="answer4" value="3">
+                        <label for="answer4"><span id="ans4"></span></label>
+                    </div>
+                    <div id="answer-warning" class="answer-warning warning">Pick an answer</div>
+                    <button id="next">Next</button>
+                </form>
+            </div>
+            <div id="frame-end">
+                <h3><span id="end-title"></span></h3>
+                <p><span id="end-paragraph"></span></p>
+                <img id="img-reward" height="200" src="" alt="image of either reward of PRO or Criminal"></img>
+                <button id="summary">Summary</button>
+            </div>
+        </div>
+        <div id="frame-summary">
+            <div id="frame-summary-container">
+            </div>
+            <button class="end" id="end">End & Retry</button>
+        </div>
+        </main>
+        <footer>
+            Created By Praveen © 2020
+        </footer>
+    </body>
+</html>
